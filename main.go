@@ -13,7 +13,7 @@ import (
 func main() {
 	botToken := os.Getenv("tgsectok")
 
-	bot, err := telego.NewBot(botToken, telego.WithDefaultDebugLogger())
+	bot, err := telego.NewBot(botToken, telego.WithDefaultLogger(false, true))
 	if err != nil {
 		log.Panic(err)
 	}
@@ -30,7 +30,8 @@ func main() {
 
 	bh, _ := th.NewBotHandler(bot, updates)
 
-	keywords := []string{"заехать", "заказать", "записать", "купить", "позвонить", "пришить", "приклеить", "забрать"}
+	keywords := []string{"сделать", "заехать", "заказать", "записать", "купить", "позвонить", "пришить", "приклеить", "забрать",
+		"to do", "to drive", "to order", "to write", "to buy", "to call", "to sew on", "to glue", "to pick up"}
 
 	// handle any message
 	bh.HandleMessage(func(bot *telego.Bot, message telego.Message) {
