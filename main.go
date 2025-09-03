@@ -30,12 +30,9 @@ func main() {
 
 	bh, _ := th.NewBotHandler(bot, updates)
 
-	keywords := []string{"сделать", "заехать", "заказать", "записать", "купить", "позвонить", "пришить", "приклеить", "забрать",
-		"to do", "to drive", "to order", "to write", "to buy", "to call", "to sew on", "to glue", "to pick up"}
-
 	// handle any message
 	bh.HandleMessage(func(bot *telego.Bot, message telego.Message) {
-		if stringHasKeywordAsPrefix(strings.ToLower(message.Text), keywords) {
+		if message.Text != "" {
 			msg := tu.Message(
 				message.Chat.ChatID(),
 				message.Text,
@@ -63,14 +60,4 @@ func main() {
 
 	defer bh.Stop()
 	bh.Start()
-}
-
-func stringHasKeywordAsPrefix(s string, keywords []string) bool {
-	for _, kw := range keywords {
-		if strings.HasPrefix(s, kw) {
-			return true
-		}
-	}
-
-	return false
 }
