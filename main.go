@@ -3,8 +3,7 @@ package main
 import (
 	"log"
 	"os"
-	"strings"
-
+	
 	"github.com/mymmrac/telego"
 	th "github.com/mymmrac/telego/telegohandler"
 	tu "github.com/mymmrac/telego/telegoutil"
@@ -61,3 +60,4 @@ func main() {
 	defer bh.Stop()
 	bh.Start()
 }
+
